@@ -1,0 +1,6 @@
+framework module Pods_PredictMood {
+  umbrella header "Pods-PredictMood-umbrella.h"
+
+  export *
+  module * { export * }
+}
