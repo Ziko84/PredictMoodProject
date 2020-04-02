@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         textField.delegate = self
         textField.autocorrectionType = .no
-
+        
     }
     
     func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
@@ -44,7 +44,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         return true
     }
     
-   @objc func keyboardWillChange(notification : Notification){
+    @objc func keyboardWillChange(notification : Notification){
         guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
@@ -67,7 +67,15 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func predictPressed(_ sender: Any) {
         fetchTweets()
+        
+        
         textField.resignFirstResponder()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.textField.text = ""
+        sentimentLabel.text = "😐"
+        scoreLabel.text = "0"
     }
     
     
